@@ -39,6 +39,10 @@
           font-size: 3.5rem;
         }
       }
+      footer {
+        position: absolute;
+        bottom: 0;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
@@ -71,14 +75,8 @@
 </header>
 
 <main role="main">
+<h2 style="padding-left:90px; padding-right:90px; padding-top: 100px">Wellcome to my blog!</h2>
 
-  <br />
-
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
-
-    <!-- Three columns of text below the carousel -->
   <div class="blogs" style="padding-left:90px; padding-right:90px; padding-top: 100px">
     {% for b in blogs.all %}
       <h3><a href="{% url 'blog_detail' b.id %}"/>{{b.blog_name}}</a></h3>
