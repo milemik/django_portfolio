@@ -83,12 +83,10 @@
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <!-- Three columns of text below the carousel -->
-  <div class="BLOG!" style="padding-left:90px; padding-right:90px; padding-top: 200px">
-      <h3 href="">{{ blog.blog_name }}</h3>
-      <p>{{ blog.blog_date }}</p>
-      <img class="" src="{{ blog.blog_image.url}}" height=500/>
-      <p>{{ blog.blog_description }}</p>
-    
+  <div class="proxies" style="padding-left:90px; padding-right:90px">
+    {% for p in proxies.all %}
+      <p>{p.proxie}</p>
+    {% endfor %}
   </div>
 
 

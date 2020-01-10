@@ -1,4 +1,4 @@
-!doctype html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -39,6 +39,10 @@
           font-size: 3.5rem;
         }
       }
+      footer {
+        position: absolute;
+        bottom: 0;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
@@ -46,17 +50,17 @@
   <body>
     <header>
   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Ivan Miletic</a>
+    <a class="navbar-brand" href="{% url 'home' %}">Ivan Miletic</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
+          <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
       </ul>
       <!--
@@ -69,10 +73,8 @@
     </div>
   </nav>
 </header>
-
-<main role="main">
-
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+<main role="main" >
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" style="padding-top: 50px">
     <ol class="carousel-indicators">
       <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
       <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -85,7 +87,7 @@
           <div class="carousel-caption text-left">
             <h1>IVANSCRAPER - M</h1>
             <p>Hello there, if you have some scraping to do, or you have some scrap project you came to the right place!</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+            
           </div>
         </div>
       </div>
@@ -95,7 +97,7 @@
           <div class="carousel-caption">
             <h1>Ivan Miletic</h1>
             <p>More than 2 years of python experience, more than 100 scraping projects done, and more than 60 satisfied clients</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'about'%}" role="button">Learn more</a></p>
           </div>
         </div>
       </div>
@@ -104,8 +106,8 @@
         <div class="container">
           <div class="carousel-caption text-right">
             <h1>FREE PROXIE</h1>
-            <p>My gift for you proxies that are updated every 30minutes</p>
-            <p><a class="btn btn-lg btn-primary" href="#" role="button">FREE PROXIES</a></p>
+            <p>My gift for you some free proxies</p>
+            <p><a class="btn btn-lg btn-primary" href="{% url 'freeproxies' %}" role="button">FREE PROXIES</a></p>
           </div>
         </div>
       </div>
@@ -119,7 +121,6 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  <br />
 
   <!-- Marketing messaging and featurettes
   ================================================== -->

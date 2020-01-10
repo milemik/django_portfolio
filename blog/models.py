@@ -9,3 +9,9 @@ class Blog(models.Model):
 	blog_image = models.ImageField(upload_to='images/')
 	# opis posla
 	blog_description = models.TextField()
+
+	def blog_text():
+		tex = f"{self.blog_description[:100]}..."
+
+	def __str__(self):
+		return self.blog_name
