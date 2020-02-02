@@ -40,7 +40,7 @@
         }
       }
       footer {
-        position: absolute;
+        position: relative;
         bottom: 0;
       }
     </style>
@@ -84,6 +84,7 @@
 
     <!-- Three columns of text below the carousel -->
 <h2 style="padding-left:90px; padding-top:90px">Free proxies here</h2>
+<h4>{{ error }}</h4>
   <div class="proxies" style="padding-left:90px; padding-right:90px">
     {% for p in proxies.all %}
       <p>{p.proxie}</p>
