@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v3.8.6">
-    <title>ivanscrap-M</title>
+    <title>Ivan Miletic</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/carousel/">
 
@@ -83,12 +83,12 @@
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
     <!-- Three columns of text below the carousel -->
-  <div class="BLOG!" style="padding-left:90px; padding-right:90px; padding-top: 200px">
+  <div class="BLOG!" style="padding-left:90px; padding-right:90px; padding-top: 50px">
       <h3 href="">{{ blog.blog_name }}</h3>
       <p>{{ blog.blog_date }}</p>
       <img class="" src="{{ blog.blog_image.url}}" height=500/>
       <p>{{ blog.blog_description }}</p>
-    
+      <a href='{% url "allblogs" %}'>Back to blogs</a>
   </div>
 
 

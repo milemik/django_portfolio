@@ -5,9 +5,11 @@ from django.db import models
 # U dokumentaciji django model field refere
 
 class Job(models.Model):
-	# Naziv
-	jtitle = models.CharField(max_length=100)
-	# Dodavalje slike u bazu podataka
-	image = models.ImageField(upload_to='images/')
-	# opis posla
-	description = models.TextField()
+        # Naziv
+        jtitle = models.CharField(max_length=100)
+        # Dodavalje slike u bazu podataka
+        image = models.ImageField(upload_to='images/')
+        # opis posla
+        description = models.TextField()
+        def __str__(self):
+                return self.jtitle 
