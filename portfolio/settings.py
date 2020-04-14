@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'proxyapp.apps.ProxyappConfig',
     'blog.apps.BlogConfig',
     'jobs.apps.JobsConfig',
+    'nalozi.apps.NaloziConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,9 +80,9 @@ WSGI_APPLICATION = 'portfolio.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'miletadb',
-        'USER': 'postgres',
-        'PASSWORD': 'wingchun',
+        'NAME': 'portfoliodb',
+        'USER': 'ivanp',
+        'PASSWORD': '123456',
         'HOST': 'localhost',
         'PORT': 5432,
     }
