@@ -48,6 +48,9 @@
         width: 100%;
         height: 2.5rem;
       }
+      table, tr, th {
+        padding-right: 20px;
+      }
     </style>
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
@@ -74,6 +77,29 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
      -->
+        {% if user.is_authenticated %}
+        <table>
+          <tr>
+            <th>
+              <a href="{% url 'logout' %}"> Logout </a>
+            </th>
+            <th>
+              <a href='#'>Hello {{ user.username }}</a>
+            </th>
+          </tr>
+        </table>
+        {% else %}
+        <table>
+        <tr>
+          <th>
+            <a href="{% url 'login'%}"> Login </a>
+          </th>
+          <th>
+            <a href="{% url 'singup' %}"> Sing Up </a>
+          </th>
+        </tr>
+        {% endif %}
+      </table>
      <a href="mailto:pythonscraper@outlook.com" >CONTACT</a>
     </div>
   </nav>
