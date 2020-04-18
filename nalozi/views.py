@@ -1,20 +1,20 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import get_user_model, login, logout, authenticate
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+from .forms import SignupForm
 
 
 def singup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('login')
-        else:
-            return render(request, 'singup.html', {'message':
-                          'wrong user name or pass'})
     else:
-        form = UserCreationForm()
-    return render(request, 'singup.html', {'form': form})
+        form = SignupForm()
+    return render(request, 'singup.html', {
+        'form': form,
+    })
 
 
 def user_login(request):
