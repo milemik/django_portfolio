@@ -4,21 +4,27 @@
 <br />
 <br />
 <br />
-<div>
-<h1>HELLO {{user.username}}</h1>
-<img src="{{ info.avatar.url }}" height="100" />
-	<ul>
-		<li>{{name.user_name}}</li>
-		<li>{{name.email}}</li>
-		<li>{{info.about}}</li>
-		<ul>
-		{% for job in jobs %}
-		<li>{{job.jobtitle}}</li>
-		<li><img src="{{job.jobimage.url}}"/></li>
-		<li>{{job.jobdescription}}</li>
-		{% endfor %}
-		</ul>
-	</ul>
-</div>
+ <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic"><img src="{{ info.avatar.url }}" height="70" />  HELLO {{user.username}}</h1>
+      <p class="lead my-3">{{info.about}}</p>
+      <p class="lead mb-0">{{user.email}}</p>
+    </div>
+  </div>
+
+   <div class="row mb-2">
+   	{% for job in jobs %}
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">{{job.jobtitle}}</h3>
+          <p class="card-text mb-auto">{{job.jobdescription}}</p>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img src="{{job.jobimage.url}}"  width="200" height="250" />
+        </div>
+      </div>
+    </div>
+    {% endfor %}
 
 {% endblock %}
