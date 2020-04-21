@@ -29,4 +29,5 @@ class ClientJobs(models.Model):
     jobimage = models.ImageField(upload_to='images/')
     # opis posla
     jobdescription = models.TextField()
+    date_time = models.DateTimeField(auto_now_add=True)
     all_see = models.BooleanField()
