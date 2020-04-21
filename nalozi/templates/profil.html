@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br />
+<br />
+<br />
+<div>
+<h1>HELLO {{user.username}}</h1>
+<img src="{{ info.avatar.url }}" height="100" />
+	<ul>
+		<li>{{name.user_name}}</li>
+		<li>{{name.email}}</li>
+		<li>{{info.about}}</li>
+		<ul>
+		{% for job in jobs %}
+		<li>{{job.jobtitle}}</li>
+		<li><img src="{{job.jobimage.url}}"/></li>
+		<li>{{job.jobdescription}}</li>
+		{% endfor %}
+		</ul>
+	</ul>
+</div>
+
+{% endblock %}

@@ -54,6 +54,19 @@
   <!-- Wrap the rest of the page in another container to center all the content. -->
   <br />
     <!-- Three columns of text below the carousel -->
+    <div class="container marketing">
+    <div class="row">
+      {% for cjob in client_jobs %}
+      <div class="col-lg-4">
+        <h2>{{cjob.jobtitle}}</h2>
+        <svg class="bd-placeholder-img rounded-circle" width="0" height="140" xmlns="http://www.w3.org/2000/svg" >
+        <img src="{{ cjob.jobimage.url }}" height="100" />
+        </svg>
+        <p>{{cjob.jobdescription}}</p>
+      </div><!-- /.col-lg-4 -->
+      {% endfor %}
+    </div><!-- /.row -->
+  </div><!-- /.container -->
    <div class="container marketing">
     <div class="row">
       {% for job in jobs.all %}

@@ -96,7 +96,7 @@
               <a href="{% url 'logout' %}"> Logout </a>
             </th>
             <th>
-              <a href='#'>Hello {{ user.username }}</a>
+              <a href="{% url 'profile' %}">Hello {{ user.username }}</a>
             </th>
           </tr>
         </table>

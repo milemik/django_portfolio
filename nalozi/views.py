@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from .forms import SignupForm
+from .models import Korisnik
+from jobs.models import ClientJobs
 
 
 def singup(request):
@@ -39,3 +41,13 @@ def user_logout(request):
         return redirect('login')
     else:
         return render(request, 'logout.html')
+
+
+def profile(request):
+    try:
+        info = Korisnik.objects.filter(user=request.user).first()
+        jobs = ClientJobs.objects.filter(client=request.user)
+        print(jobs)
+        return render(request, 'profil.html', {'info': info, 'jobs': jobs})
+    except TypeError:
+        return redirect('singup')
