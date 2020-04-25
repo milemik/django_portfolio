@@ -29,7 +29,7 @@ def user_login(request):
             return redirect('/')
         else:
             return render(request, 'login.html', {
-                'form': form, 'message': 'UPS!'})
+                'form': form, 'message': 'UPS! Wrong username or pass'})
     else:
         form = AuthenticationForm()
         return render(request, 'login.html', {'form': form})

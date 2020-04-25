@@ -2,17 +2,15 @@
 {% block content %}
 <h2 style="padding-left:90px; padding-right:90px; padding-top: 100px">Wellcome to my blog!</h2>
 
- LOGIN!
   {% if message %}
+  <div class="alert alert-primary" role="alert">
     {{message}}
+</div>
+  
   {% endif %}
    <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
-    <!-- Username:
-    <input type="text" name="username">
-    Password:
-    <input type="password" name="password"> -->
-    <button type="submit">Submit</button>
+    <button class="btn btn-primary" style="margin-top: 20px; margin-left: 200px" type="submit">Submit</button>
   </form>
 {% endblock %}

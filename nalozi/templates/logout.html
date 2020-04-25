@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2 style="padding-left:90px; padding-right:90px; padding-top: 100px">Ahh Leaving so soon?!</h2>
+<div class="alert alert-primary" role="alert" style="padding-left:90px; padding-right:90px; padding-top: 100px; text-align: center">
+  <h2>Ahh Leaving so soon?!</h2>
+</div>
 
-    <form method="POST">
+    <form method="POST" style="text-align: center">
     {% csrf_token %}
-    <button type="submit">LOGOUT</button>
+    <button class="btn btn-secondary" type="submit" style="text-align: center">LOGOUT</button>
   </form>
 {% endblock %}
