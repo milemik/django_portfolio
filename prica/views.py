@@ -21,7 +21,6 @@ class MyView(View):
             PricaModel.objects.create(sender=request.user,
                                       reciever=admin_user,
                                       text=request.POST['text'])
-            print('OK')
 
         return render(request, 'prica/home.html', {'form': self.form()})
 
