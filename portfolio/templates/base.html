@@ -89,7 +89,27 @@
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
      -->
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+        <table>
+          <tr>
+            <th>
+              <a href="{% url 'logout' %}"> Logout </a>
+            </th>
+            <th>
+              <a href="{% url 'profile' %}">Hello {{ user.username }}</a>
+            </th>
+            <th>
+              <a href="{% url 'price' %}">inbox</a>
+            </th>
+            <th>
+              <a href="{% url 'create-job' %}">Create job</a>
+            </th>
+            <th>
+              <a href="{% url 'create-blog' %}">Create Blog</a>
+            </th>
+          </tr>
+        </table>
+        {% elif user.is_authenticated %}
         <table>
           <tr>
             <th>
