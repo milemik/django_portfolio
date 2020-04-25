@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="list-group" style="padding-top: 80px">
+{% for prica in price %}
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+    	{% if prica.reciever != request.user %}
+      <h5 class="mb-1">Message send to: {{prica.reciever}}</h5>
+      	{% else %}
+      <h5 class="mb-1">Message from: {{prica.sender}}</h5>
+      	{% endif %}
+      <small>at {{prica.time}}</small>
+    </div>
+    <p class="mb-1">{{prica.text}}</p>
+  </a>
+<!-- <div style="padding-top: 70px">
+	<p><b>{{prica.reciever}}</b> : <i>{{prica.text}}</i></p>
+	<small>at {{prica.time}}</small> -->
+
+{% endfor %}
+
+<div style="padding-top: 50px;">
+	<a href="{% url 'home-prica' %}" type="button" class="btn btn-info">SEND NEW MESSAGE</a>
+</div>
+
+{% endblock %}
