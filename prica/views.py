@@ -22,12 +22,12 @@ class MyView(View):
             PricaModel.objects.create(sender=request.user,
                                       reciever=admin_user,
                                       text=request.POST['text'])
-            send_mail(
-                f'New message from {request.user}',
-                f'MESSAGE: {request.POST["text"]}',
-                'pythonscraper@outlook.com',
-                ['pythonscraper@outlook.com'],
-                )
+            # send_mail(
+            #     f'New message from {request.user}',
+            #     f'MESSAGE: {request.POST["text"]}',
+            #     'pythonscraper@outlook.com',
+            #     ['pythonscraper@outlook.com'],
+            #     )
 
         return render(request, 'prica/home.html', {'form': self.form()})
 
