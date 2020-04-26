@@ -26,7 +26,7 @@ class MyView(View):
                 f'New message from {request.user}',
                 f'MESSAGE: {request.POST["text"]}',
                 'pythonscraper@outlook.com',
-                ['mileta99@gmail.com'],
+                ['pythonscraper@outlook.com'],
                 )
 
         return render(request, 'prica/home.html', {'form': self.form()})
