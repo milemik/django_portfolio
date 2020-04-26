@@ -4,6 +4,7 @@ from .models import PricaModel
 from django.views import View
 from .forms import PricaForm
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 
 class MyView(View):
@@ -17,10 +18,16 @@ class MyView(View):
         form = self.form(request.POST)
         admin_user = User.objects.filter(is_superuser=True).first()
         if form.is_valid():
-            #user_reciever = User.objects.get(id=request.POST['reciever'])
+            # user_reciever = User.objects.get(id=request.POST['reciever'])
             PricaModel.objects.create(sender=request.user,
                                       reciever=admin_user,
                                       text=request.POST['text'])
+            send_mail(
+                f'New message from {request.user}',
+                f'MESSAGE: {request.POST["text"]}',
+                'pythonscraper@outlook.com',
+                ['mileta99@gmail.com'],
+                )
 
         return render(request, 'prica/home.html', {'form': self.form()})
 

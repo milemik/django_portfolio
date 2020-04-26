@@ -129,19 +129,19 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'portfolio/static/')
 ]
 
-#<<<<<<< HEAD
-#=======
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'portfolio/static/')
 ]
 
-#>>>>>>> 47600bff3702b47f1b49767025e49282613374ce
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# EMAIL SETTINGS
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 try:
     from .local_settings import *
