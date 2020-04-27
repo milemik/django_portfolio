@@ -23,9 +23,10 @@ class MyView(View):
             PricaModel.objects.create(sender=request.user,
                                       reciever=admin_user,
                                       text=request.POST['text'])
+            message = f'USER: {request.user}\nMESSAGE: {request.POST["text"]}'
             send_mail(
                 f'New message from {request.user}',
-                f'MESSAGE: {request.POST["text"]}',
+                message,
                 settings.EMAIL_HOST_USER,
                 ['pythonscraper@outlook.com'],
                 )
