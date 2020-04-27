@@ -51,31 +51,19 @@
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
-    <!-- Three columns of text below the carousel -->
-   <div class="container marketing" style="padding-top: 30px">
-    <div class="row">
-      {% for job in jobs.all %}
-      <div class="col-lg-4">
-        <h2>{{job.jtitle}}</h2>
-        <footer class="blockquote-footer"></footer>
-        <svg class="bd-placeholder-img rounded-circle" width="0" height="140" xmlns="http://www.w3.org/2000/svg" >
-        <img src="{{ job.image.url }}" height="100" />
-        </svg>
-        <p>{{job.description}}</p>
-      </div><!-- /.col-lg-4 -->
-      {% endfor %}
-      {% for cjob in client_jobs %}
-      <div class="col-lg-4">
-        <h2>{{cjob.jobtitle}}</h2>
-        <footer class="blockquote-footer">hired by {{ cjob.client }}</footer>
-        <svg class="bd-placeholder-img rounded-circle" width="0" height="140" xmlns="http://www.w3.org/2000/svg" >
-        <img src="{{ cjob.jobimage.url }}" height="100" />
-        </svg>
-        <p>{{cjob.jobdescription}}</p>
-      </div><!-- /.col-lg-4 -->
-      {% endfor %}
-    </div><!-- /.row -->
-  </div><!-- /.container -->
-<br />
+
+<div class="card-deck" style="padding-top: 30px">
+  {% for job in jobs.all %}
+  <div class="card">
+    <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{job.jtitle}}</h5>
+      <p class="card-text">{{job.description}}</p>
+      <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 
 {% endblock %}
