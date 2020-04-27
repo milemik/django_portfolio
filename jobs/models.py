@@ -31,3 +31,6 @@ class ClientJobs(models.Model):
     jobdescription = models.TextField()
     date_time = models.DateTimeField(auto_now_add=True)
     all_see = models.BooleanField()
+
+    class Meta:
+        ordering = ['-date_time']

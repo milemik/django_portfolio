@@ -12,3 +12,6 @@ class PricaModel(models.Model):
                                  related_name='reciever')
     text = models.TextField(max_length=200)
     time = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+    	ordering = ['-time']
