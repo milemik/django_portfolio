@@ -14,8 +14,8 @@ def singup(request):
         if form.is_valid():
             form.save()
             message = (
-                f'USERNAME: {request.POST["username"]}\n',
-                f'USER_MAIL: {request.POST["email"]}',
+                f'USERNAME: {request.POST["username"]}\n'
+                f'USER_MAIL: {request.POST["email"]}'
                 )
             send_mail(
                 f'WEBSITE: New registrated user!',
