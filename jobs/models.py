@@ -19,6 +19,9 @@ class Job(models.Model):
     def __str__(self):
         return self.jtitle
 
+    class Meta:
+        ordering = ['-id']
+
 
 class ClientJobs(models.Model):
     client = models.ForeignKey(settings.AUTH_USER_MODEL,
