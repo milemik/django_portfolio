@@ -9,7 +9,7 @@
 <div class="card-columns" style="padding-top: 30px">
   {% for job in jobs.all %}
   <div class="card">
-    <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap">
+    <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap" width=100px>
     <div class="card-body">
       <h5 class="card-title">{{job.jtitle}}</h5>
       <p class="card-text">{{job.description}}</p>
