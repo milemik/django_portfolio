@@ -49,14 +49,7 @@
       #container {
           height: 100%;
       }
-      footer {
-          flex: 0 0 auto;
-          display: flex;
-          background-color: #efefef;
-          text-align: center;
-          background-color: #a3c2c2;
-          padding-top: 10px;
-      }
+
       table, tr, th {
         padding-right: 20px;
       }
@@ -145,40 +138,17 @@
     </div>
   </nav>
 </header>
-
-<main role="main">
-
-<div> 
-  <div style="width: 80%; float: left;">
-  <div id='content-wrap'>
+<body>
+<div id='content-wrap'>
 {% block content %}
 {% endblock %}
-  </div>
-</div>
-<div style="width: 20%; float: left; padding-top: 70px; padding-right: 20px; text-align: center;">
-    <ul class="list-group">
-      <li class="list-group-item">
-        <h4>Useful links</h4>
-      </li>
-      <li class="list-group-item">
-        <a href='https://www.python.org/'>Python</a>
-      </li>
-      <li class="list-group-item">
-        <a href='https://www.django-rest-framework.org/'>Django rest framework</a>
-      </li>
-      <li class="list-group-item">
-        <a href='https://www.djangoproject.com/'>Django</a>
-      </li>
-    </ul>
-  </div>
-</div>
-  
+  </div>  
 </main>
 <!-- FOOTER -->
-  <footer class="container">
-    <p>&copy; {% now "Y" %} Company, Inc. &middot;</p>
-    <p style="padding-left: 60%;"><a href="#">Back to top</a></p>
-  </footer>
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+  <a class="navbar-brand">&copy; {% now "Y" %} Company, Inc. &middot;</a>
+  <a class="navbar-brand" href="#">Back to top</a>
+</nav>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

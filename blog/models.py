@@ -14,3 +14,6 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.blog_name
+
+    class Meta:
+        ordering = ['-blog_date']
