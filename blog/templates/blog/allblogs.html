@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 style="padding-left:3rem; padding-right:3rem; padding-top: 4rem; padding-bottom: 1rem; color: #669999;">Wellcome to my blog!</h2>
+<h2 style="padding-left: 5%; padding-right: 5%; padding-top: 4rem; padding-bottom: 1rem; color: #669999;">Wellcome to my blog!</h2>
 
-  <div class="blogs" style="padding-left: 3rem; padding-right:3rem;">
+  <div class="blogs" style="padding-left: 5%; padding-right:5%;">
     {% for b in blogs.all %}
       <h3><a href="{% url 'blog_detail' b.id %}"/>{{b.blog_name}}</a></h3>
       <p>{{ b.blog_date }}</p>
