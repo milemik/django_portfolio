@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<img src='/media/images/homeimage.jpg' class="img-fluid" alt="Responsive image"/>
+<img style="padding-top: 3rem;" src='/media/images/homeimage.jpg' class="img-fluid" alt="Responsive image"/>
   
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="card-columns" style="padding-top: 30px">
+<div class="card-columns" style="padding-top: 3rem;">
   {% for job in jobs.all %}
   <div class="card">
     <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap">
