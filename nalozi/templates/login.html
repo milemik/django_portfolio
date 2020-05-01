@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2 style="padding-top: 4rem; padding-bottom: 2rem;text-align: center;">Wellcome</h2>
-<small style="text-align: center;">If you are not registrated user you can register <a href='{% url "singup" %}'>here</a></small>
 
   {% if message %}
   <div class="alert alert-primary" role="alert" style="text-align: center;">
@@ -14,4 +13,5 @@
     {{form.as_p}}
     <button class="btn btn-primary" type="submit">Submit</button>
   </form>
+ <small style="text-align: center;">If you are not registrated user you can register <a href='{% url "singup" %}'>here</a></small>
 {% endblock %}
