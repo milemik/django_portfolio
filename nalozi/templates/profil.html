@@ -7,11 +7,11 @@
  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic"><img src="{{ info.avatar.url }}" height="70" />  HELLO {{user.username}}</h1>
-      <p class="lead my-3">{{info.about}}</p>
-      <p class="lead mb-0">{{user.email}}</p>
+      <p class="lead my-3">About: {{info.about}}</p>
+      <p class="lead mb-0">Your email: {{user.email}}</p>
     </div>
   </div>
-
+  <h4>Jobs with me:</h4>
    <div class="row mb-2">
    	{% for job in jobs %}
     <div class="col-md-6">
@@ -27,5 +27,6 @@
       </div>
     </div>
     {% endfor %}
+  </div>
 
 {% endblock %}

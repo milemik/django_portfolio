@@ -6,13 +6,18 @@ from .models import Korisnik
 from jobs.models import ClientJobs
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth import get_user_model
 
 
 def singup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            form.save()
+            get_user_model().objects.create(
+                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
+                password=form.cleaned_data['password1'],
+                )
             message = (
                 f'USERNAME: {request.POST["username"]}\n'
                 f'USER_MAIL: {request.POST["email"]}'

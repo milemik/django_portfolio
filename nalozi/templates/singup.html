@@ -1,10 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 style="padding-left:90px; padding-right:90px; padding-top: 100px">Wellcome to my blog!</h2>
+<h2 style="text-align: center; padding-top: 4rem; color: #669999">Wellcome to my Website!</h2>
+<h4 style="text-align: center; color: #75a3a3;">Sing up and chat with me and keep update with my work</h4>
 
-  <form method="POST">
+  <form method="POST" style="text-align: center;">
     {% csrf_token %}
-    {{form.as_p}}
-    <button class="btn btn-primary" style="margin-top: 20px; margin-left: 200px" type="submit">Submit</button>
+    <!-- {{form.as_p}} -->
+    {{form.non_field_errors}}
+    <div class="fieldWrapper">
+    	<p>Enter desired username:<p>
+	    {{form.username.errors}}
+	    {{form.username}}
+	</div>
+	<div clas="fieldWrapper">
+		<p>Enter your email</p>
+		{{form.email.errors}}
+    	{{form.email}}
+	</div>
+	<div class="fieldWrapper">
+		<p>Password</p>
+		{{form.password1.errors}}
+    	{{form.password1}}
+	</div>
+	<div class="fieldWrapper">
+		<p>Confirm password</p>
+		{{form.password2.errors}}
+    	{{form.password2}}
+	</div>
+    <button class="btn btn-primary" style="margin-top: 1rem;" type="submit">Submit</button>
   </form>
   {% endblock %}
