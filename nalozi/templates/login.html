@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 style="padding-top: 4rem;">Wellcome to my blog!</h2>
+<h2 style="padding-top: 4rem; text-align: center;">Wellcome to my blog!</h2>
 
   {% if message %}
-  <div class="alert alert-primary" role="alert" style="text-align: center;>
+  <div class="alert alert-primary" role="alert" style="text-align: center;">
     {{message}}
 </div>
   
   {% endif %}
-   <form method="POST" style="text-align: center;>
+   <form method="POST" style="text-align: center;"">
     {% csrf_token %}
     {{form.as_p}}
     <button class="btn btn-primary" style="margin-top: 20px; margin-left: 200px" type="submit">Submit</button>
