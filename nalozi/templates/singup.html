@@ -9,22 +9,30 @@
     {{form.non_field_errors}}
     <div class="fieldWrapper">
     	<p>Enter desired username:<p>
-	    {{form.username.errors}}
+    	<div class="alert alert-primary" role="alert">
+	    	{{form.username.errors}}
+		</div>
 	    {{form.username}}
 	</div>
 	<div clas="fieldWrapper">
 		<p>Enter your email</p>
-		{{form.email.errors}}
+		<div class="alert alert-primary" role="alert">
+			{{form.email.errors}}
+		</div>
     	{{form.email}}
 	</div>
 	<div class="fieldWrapper">
 		<p>Password</p>
-		{{form.password1.errors}}
+		<div class="alert alert-primary" role="alert">
+			{{form.password1.errors}}
+		</div>
     	{{form.password1}}
 	</div>
 	<div class="fieldWrapper">
 		<p>Confirm password</p>
-		{{form.password2.errors}}
+		<div class="alert alert-primary" role="alert">
+			{{form.password2.errors}}
+		</div>
     	{{form.password2}}
 	</div>
     <button class="btn btn-primary" style="margin-top: 1rem;" type="submit">Submit</button>
