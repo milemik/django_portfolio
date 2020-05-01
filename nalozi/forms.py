@@ -7,7 +7,7 @@ class SignupForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super().save(False)
-        user.email = user.username
+        user.email = user.email
         user = super().save()
 
         return user
