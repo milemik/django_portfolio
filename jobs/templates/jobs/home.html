@@ -1,23 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-<img style="padding-top: 3rem;" src='/media/images/homeimage.jpg' class="img-fluid" alt="Responsive image"/>
+<img style="padding-top: 3rem;height: 15rem; width: 100%;" src='/media/images/homeimage.jpg' class="img-fluid" alt="Responsive image"/>
   
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
 
-<div class="card-columns" style="padding-top: 3rem;">
-  {% for job in jobs.all %}
+<!-- <div class="card-columns" style="padding-top: 3rem;height: 600px;">
+{% for job in jobs.all %}
   <div class="card">
     <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">{{job.jtitle}}</h5>
       <p class="card-text">{{job.description}}</p>
-      <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
     </div>
   </div>
   {% endfor %}
+</div> -->
+{% for job in jobs.all %}
+<div class="card mb-3" style="text-align: center;margin-top: 20px;">
+  <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap" style="height: 15rem;width: 20rem;margin-left: 37%;border: 10px solid black;">
+  <div class="card-body">
+    <h5 class="card-title">{{job.jtitle}}</h5>
+    <p class="card-text">{{job.description}}</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
 </div>
-
+{% endfor %}
 
 {% endblock %}

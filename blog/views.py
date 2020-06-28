@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Blog
 from django.views import View
 from .forms import BlogForm
@@ -29,7 +29,9 @@ class AddBlogVew(SuperUserCheck, View):
                 blog_name=form.cleaned_data.get('title'),
                 blog_image=request.FILES['blog_image'],
                 blog_description=form.cleaned_data.get('description'),
-                )
+            )
             obj.save()
-
-        return render(request, 'blog/createblog.html', {'form': self.form()})
+            return redirect('allblogs')
+        else:
+            return render(request, 'blog/createblog.html',
+                          {'form': self.form()})

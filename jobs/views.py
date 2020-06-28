@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Job, ClientJobs
 from .forms import JobForm
 from django.views import View
@@ -9,7 +9,7 @@ def home(request):
     jobs = Job.objects
     client_jobs = ClientJobs.objects.filter(all_see=True)
     return render(request, "jobs/home.html", {'jobs': jobs,
-                  'client_jobs': client_jobs})
+                                              'client_jobs': client_jobs})
 
 
 def about(request):
@@ -30,7 +30,9 @@ class AddJobView(SuperUserCheck, View):
                 jtitle=form.cleaned_data.get('title'),
                 image=request.FILES['image_form'],
                 description=form.cleaned_data.get('description')
-                )
+            )
             obj.save()
-
-        return render(request, 'jobs/createjob.html', {'form': self.form()})
+            return redirect('home')
+        else:
+            return render(request, 'jobs/createjob.html',
+                          {'form': self.form()})
