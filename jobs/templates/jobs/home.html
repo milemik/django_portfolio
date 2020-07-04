@@ -19,7 +19,7 @@
 </div> -->
 {% for job in jobs.all %}
 <div class="card mb-3" style="text-align: center;margin-top: 20px;">
-  <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap" style="height: 15rem;width: 20rem;margin-left: 37%;border: 10px solid black;">
+  <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap" style="height: 15rem;width: 50%;display: block;margin-left: auto;margin-right: auto;border: 10px solid black;">
   <div class="card-body">
     <h5 class="card-title"><b>{{job.jtitle}}</b></h5>
     <p class="card-text">{{job.description}}</p>
