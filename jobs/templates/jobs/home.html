@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<img style="padding-top: 3rem;height: 15rem; width: 100%;" src='/media/images/homeimage.jpg' class="img-fluid" alt="Responsive image"/>
-  
+<!-- <div class='slika'>
+  <img style="padding-top: 3rem;height: 15rem; width: 100%;position: relative;text-align: center;
+  color: white;" src='/media/images/homeimage.jpg' class="img-fluid" alt="Responsive image"/>
+  <h3 class='image'>Test</h2>
+</div> -->
+<!-- <img src='/media/images/homeimage.jpg'> -->
+<div class="slika">
+  <img src='/media/images/homeimage.jpg'>
+  <div class="content">
+    <h1>imileticdev.com</h1>
+    <p>You need a python developer? You can offer me a job <a href='{% url "offer-job" %}'>here</a>.</p>
+  </div>
+</div>
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
