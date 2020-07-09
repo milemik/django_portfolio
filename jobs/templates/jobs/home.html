@@ -17,6 +17,16 @@
   </div>
   {% endfor %}
 </div> -->
+{% for job in client_jobs.all %}
+<div class="card mb-3" style="text-align: center;margin-top: 20px;">
+  <img class="card-img-top" src="{{ job.jobimage.url }}" alt="Card image cap" style="height: 50%rem;width: 50%;display: block;margin-left: auto;margin-right: auto;border: 10px solid black;">
+  <div class="card-body">
+    <h5 class="card-title"><b>{{job.jobtitle}}</b></h5>
+    <p class="card-text">{{job.jobdescription}}</p>
+  </div>
+</div>
+{% endfor %}
+
 {% for job in jobs.all %}
 <div class="card mb-3" style="text-align: center;margin-top: 20px;">
   <img class="card-img-top" src="{{ job.image.url }}" alt="Card image cap" style="height: 50%rem;width: 50%;display: block;margin-left: auto;margin-right: auto;border: 10px solid black;">
