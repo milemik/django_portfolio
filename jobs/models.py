@@ -25,7 +25,6 @@ class Job(models.Model):
 
 class ClientJobs(models.Model):
     client = models.ForeignKey(settings.AUTH_USER_MODEL,
-                               unique=True,
                                on_delete=models.CASCADE)
     jobtitle = models.CharField(max_length=100)
     # Dodavalje slike u bazu podataka

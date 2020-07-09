@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import Job, ClientJobs
-from .forms import JobForm
+from .forms import JobForm, ClientJobsForm
 from django.views import View
 from utils.premissions import SuperUserCheck
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def home(request):
@@ -33,6 +34,32 @@ class AddJobView(SuperUserCheck, View):
             )
             obj.save()
             return redirect('home')
+        else:
+            return render(request, 'jobs/createjob.html',
+                          {'form': self.form()})
+
+
+class ClinetJobView(LoginRequiredMixin, View):
+
+    form = ClientJobsForm
+    login_url = 'login'
+
+    def get(self, request):
+        form = self.form()
+        return render(request, 'jobs/createjob.html', {'form': form})
+
+    def post(self, request):
+        form = self.form(request.POST, request.FILES)
+        if form.is_valid():
+            obj = ClientJobs.objects.create(
+                client=request.user,
+                jobtitle=form.cleaned_data.get('jobtitle'),
+                jobimage=request.FILES['jobimage'],
+                jobdescription=form.cleaned_data.get('jobdescription'),
+                all_see=form.cleaned_data.get('all_see'),
+            )
+            obj.save()
+            return redirect('profile')
         else:
             return render(request, 'jobs/createjob.html',
                           {'form': self.form()})
