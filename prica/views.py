@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db.models import Q
 from .models import PricaModel
 from django.views import View
-from .forms import PricaForm
+from .forms import PricaForm, AdminPricaForm
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
 from django.conf import settings
@@ -12,10 +12,14 @@ class MyView(View):
     form = PricaForm
 
     def get(self, request):
+        if request.user.is_superuser:
+            self.form = AdminPricaForm
         form = self.form()
         return render(request, 'prica/home.html', {'form': form})
 
     def post(self, request):
+        if request.user.is_superuser:
+            self.form = AdminPricaForm
         form = self.form(request.POST)
         admin_user = User.objects.filter(is_superuser=True).first()
         if form.is_valid():
