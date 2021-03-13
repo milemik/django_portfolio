@@ -8,6 +8,12 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
+MAINTENANCE_HTML = "maintenance_profile.html"
+
+
+def maintenance(request):
+    return render(request, MAINTENANCE_HTML)
+
 def singup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)

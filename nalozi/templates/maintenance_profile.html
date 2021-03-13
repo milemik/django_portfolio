@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="maintenance" style="padding-top: 20%;">
+    <h1>UNDER MAINTENANCE</h1>
+</div>
+<script>
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function print_message(){
+        var message = "Hi, login/sing up is not possible at the moment thank you for understanding";
+        el = document.getElementById("maintenance");
+        for (var i=0; i < message.length; i++) {
+            el.innerHTML += message[i];
+            el.style.color = "red";
+            el.style.fontSize = "xx-large";
+            if (message[i] !== " ") {
+                await sleep(150);
+            }
+        }
+    }
+
+    print_message();
+</script>
+{% endblock %}
