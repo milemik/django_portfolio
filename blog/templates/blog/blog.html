@@ -5,7 +5,8 @@
       <h3 href="">{{ blog.blog_name }}</h3>
       <p>{{ blog.blog_date }}</p>
       <img class="" src="{{ blog.blog_image.url}}" height=300/>
-      <p style="white-space:pre;">{{ blog.blog_description }}</p>
+      <p style="white-space:pre;"></p>
+      {{ blog.blog_description | safe }}
       <a href='{% url "allblogs" %}'>Back to blogs</a>
   </div>
 
