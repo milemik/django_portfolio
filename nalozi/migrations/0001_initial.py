@@ -11,17 +11,22 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('jobs', '0002_auto_20200110_1151'),
+        ("jobs", "0002_auto_20200110_1151"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Korisnik',
+            name="Korisnik",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('about', models.TextField(max_length=500)),
-                ('jobs', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='jobs.Job')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, unique=True)),
+                ("id", models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name="ID")),
+                ("about", models.TextField(max_length=500)),
+                ("jobs", models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to="jobs.Job")),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, unique=True
+                    ),
+                ),
             ],
         ),
     ]

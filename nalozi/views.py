@@ -14,52 +14,54 @@ MAINTENANCE_HTML = "maintenance_profile.html"
 def maintenance(request):
     return render(request, MAINTENANCE_HTML)
 
+
 def singup(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            message = (
-                f'USERNAME: {request.POST["username"]}\n'
-                f'USER_MAIL: {request.POST["email"]}'
-                )
+            message = f'USERNAME: {request.POST["username"]}\n' f'USER_MAIL: {request.POST["email"]}'
             send_mail(
-                f'WEBSITE: New registrated user!',
+                f"WEBSITE: New registrated user!",
                 message,
                 settings.EMAIL_HOST_USER,
-                ['pythonscraper@outlook.com'],
-                )
+                ["pythonscraper@outlook.com"],
+            )
 
-            return redirect('login')
+            return redirect("login")
     else:
         form = SignupForm()
-    return render(request, 'singup.html', {
-        'form': form,
-    })
+    return render(
+        request,
+        "singup.html",
+        {
+            "form": form,
+        },
+    )
 
 
 def user_login(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = AuthenticationForm(request.POST)
-        user = authenticate(request, username=request.POST['username'],
-                            password=request.POST['password'])
+        user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
         if user is not None:
             login(request, user)
-            return redirect('/')
+            return redirect("/")
         else:
-            return render(request, 'login.html', {
-                'form': form, 'message': 'UPS! Wrong username or pass'})
+            return render(request, "login.html", {"form": form, "message": "UPS! Wrong username or pass"})
     else:
         form = AuthenticationForm()
-        return render(request, 'login.html', {'form': form})
+        return render(request, "login.html", {"form": form})
 
 
 def user_logout(request):
-    if request.method == 'POST':
+    if request.method == "POST":
+        print("LOGGING OUT")
         logout(request)
-        return redirect('login')
+        return redirect("login")
     else:
-        return render(request, 'logout.html')
+        print("GET REQUEST!?")
+        return render(request, "logout.html")
 
 
 def profile(request):
@@ -67,6 +69,6 @@ def profile(request):
         info = Korisnik.objects.filter(user=request.user).first()
         jobs = ClientJobs.objects.filter(client=request.user)
         print(jobs)
-        return render(request, 'profil.html', {'info': info, 'jobs': jobs})
+        return render(request, "profil.html", {"info": info, "jobs": jobs})
     except TypeError:
-        return redirect('singup')
+        return redirect("singup")

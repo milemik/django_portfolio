@@ -7,21 +7,21 @@ import django.utils.timezone
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('jobs', '0003_clientjobs'),
+        ("jobs", "0003_clientjobs"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='clientjobs',
-            options={'ordering': ['-date_time']},
+            name="clientjobs",
+            options={"ordering": ["-date_time"]},
         ),
         migrations.AlterModelOptions(
-            name='job',
-            options={'ordering': ['-id']},
+            name="job",
+            options={"ordering": ["-id"]},
         ),
         migrations.AddField(
-            model_name='clientjobs',
-            name='date_time',
+            model_name="clientjobs",
+            name="date_time",
             field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),
             preserve_default=False,
         ),

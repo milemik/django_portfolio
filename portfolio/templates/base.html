@@ -1,3 +1,4 @@
+{%  load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,77 +13,11 @@
 
     <!-- Bootstrap core CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
-<meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#563d7c">
+<link rel="stylesheet" href="{% static 'static/home.css'  %}"/>
 
-
-    <style>
-      .slika {
-        padding-top: 3rem;
-        position: relative;
-        margin: 0 auto;
-      }
-
-      .slika img {vertical-align: middle;width: 100%;height: 15rem;}
-
-      .slika .content {
-        position: absolute;
-        bottom: 0;
-        background: rgb(0, 0, 0); /* Fallback color */
-        background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
-        color: #f1f1f1;
-        width: 100%;
-        padding: 20px;
-      }
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      #content-wrap {
-        padding-bottom: 2.5rem;
-        padding-left: 50px;
-        padding-right: 50px;
-      }
-
-      #container {
-          height: 100%;
-      }
-
-      table, tr, th {
-        padding-right: 20px;
-      }
-
-      .card-columns {
-        @include media-breakpoint-only(lg) {
-          column-count: 4;
-        }
-        @include media-breakpoint-only(xl) {
-          column-count: 5;
-        }
-      }
-    </style>
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+      <link href="carousel.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -100,17 +35,15 @@
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
       </ul>
-      <!--
-      <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-     -->
         {% if user.is_superuser %}
         <table>
           <tr>
             <th>
-              <a style="color: white;" href="{% url 'logout' %}"> Logout </a>
+                 <form method="post" action="{% url 'logout' %}">
+                     {% csrf_token %}
+                    <button class="logout-btn" type="submit">Logout</button>
+                </form>
+{#              <a style="color: white;" href="{% url 'logout' %}"> Logout </a>#}
             </th>
             <th>
               <a style="color: white;" href="{% url 'profile' %}">Hello {{ user.username }}</a>
@@ -132,14 +65,17 @@
             <th>
               <a style="color: white;" href="{% url 'profile' %}">Hello {{ user.username }}</a>
             </th>
-            <th>
-              <a style="color: white;" href="{% url 'offer-job' %}">Offer me a Job</a>
-            </th>
+{#            <th>#}
+{#              <a style="color: white;" href="{% url 'offer-job' %}">Offer me a Job</a>#}
+{#            </th>#}
             <th>
               <a style="color: white;" href="{% url 'price' %}">inbox</a>
             </th>
             <th>
-              <a style="color: white;" href="{% url 'logout' %}"> Logout </a>
+                <form method="post" action="{% url 'logout' %}">
+                    <button class="logout-btn" type="submit">Logout</button>
+                </form>
+{#              <a style="color: white;" href="{% url 'logout' %}"> Logout </a>#}
             </th>
           </tr>
         </table>
