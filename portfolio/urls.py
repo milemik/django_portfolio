@@ -22,13 +22,13 @@ import proxyapp.views
 
 
 urlpatterns = [
-    path('adminivan/', admin.site.urls),
-    path('', jobs.views.home, name='home'),
-    path('createjob/', jobs.views.AddJobView.as_view(), name='create-job'),
-    path('offerjob/', jobs.views.ClinetJobView.as_view(), name='offer-job'),
-    path('about/', jobs.views.about, name='about'),
-    path('blog/', include('blog.urls')),
-    path('freeproxies/', proxyapp.views.prox, name='freeproxies'),
-    path('nalozi/', include('nalozi.urls')),
-    path('prica/', include('prica.urls'))
+    path("adminivan/", admin.site.urls),
+    path("", jobs.views.home, name="home"),
+    path("createjob/", jobs.views.AddJobView.as_view(), name="create-job"),
+    path("offerjob/", jobs.views.ClinetJobView.as_view(), name="offer-job"),
+    path("about/", jobs.views.about, name="about"),
+    path("blog/", include("blog.urls")),
+    path("freeproxies/", proxyapp.views.prox, name="freeproxies"),
+    path("nalozi/", include("nalozi.urls")),
+    path("prica/", include("prica.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -3,14 +3,15 @@ from .models import PricaModel
 
 
 class PricaForm(forms.ModelForm):
-
     class Meta:
         model = PricaModel
-        fields = ['text']
+        fields = ["text"]
 
 
 class AdminPricaForm(forms.ModelForm):
-
     class Meta:
         model = PricaModel
-        fields = ('reciever', 'text',)
+        fields = (
+            "reciever",
+            "text",
+        )

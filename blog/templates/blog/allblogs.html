@@ -4,10 +4,9 @@
 
   <div class="blogs" style="padding-left: 5%; padding-right:5%;">
     {% for b in blogs.all %}
-      <h3><a href="{% url 'blog_detail' b.id %}"/>{{b.blog_name}}</a></h3>
-      <p>{{ b.blog_date }}</p>
+      <h3><a href="{% url 'blog_detail' b.id %}">{{ b.blog_name }}</a></h3>
       <img class="" src="{{ b.blog_image.url}}" height=150/>
-      <p>{{ b.blog_text }}</p>
+        <p>{{ b.blog_text | safe }}</p>
     {% endfor %}
   </div>
 {% endblock %}

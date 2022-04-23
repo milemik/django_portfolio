@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('prica', '0001_initial'),
+        ("prica", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='pricamodel',
-            options={'ordering': ['-time']},
+            name="pricamodel",
+            options={"ordering": ["-time"]},
         ),
     ]

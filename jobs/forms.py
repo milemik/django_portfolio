@@ -9,7 +9,6 @@ class JobForm(forms.Form):
 
 
 class ClientJobsForm(forms.ModelForm):
-
     class Meta:
         model = ClientJobs
-        fields = ['jobtitle', 'jobimage', 'jobdescription', 'all_see']
+        fields = ["jobtitle", "jobimage", "jobdescription", "all_see"]
