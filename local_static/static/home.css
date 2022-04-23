@@ -53,3 +53,11 @@ table, tr, th {
         column-count: 5;
     }
 }
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+}

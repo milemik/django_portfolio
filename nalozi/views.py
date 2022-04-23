@@ -56,9 +56,11 @@ def user_login(request):
 
 def user_logout(request):
     if request.method == "POST":
+        print("LOGGING OUT")
         logout(request)
         return redirect("login")
     else:
+        print("GET REQUEST!?")
         return render(request, "logout.html")
 
 
