@@ -1,3 +1,4 @@
+{%  load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,67 +23,10 @@
 <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
 <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#563d7c">
+<link rel="stylesheet" href="{% static 'static/home.css'  %}"/>
 
-
-    <style>
-      .slika {
-        padding-top: 3rem;
-        position: relative;
-        margin: 0 auto;
-      }
-
-      .slika img {vertical-align: middle;width: 100%;height: 15rem;}
-
-      .slika .content {
-        position: absolute;
-        bottom: 0;
-        background: rgb(0, 0, 0); /* Fallback color */
-        background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
-        color: #f1f1f1;
-        width: 100%;
-        padding: 20px;
-      }
-
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      #content-wrap {
-        padding-bottom: 2.5rem;
-        padding-left: 50px;
-        padding-right: 50px;
-      }
-
-      #container {
-          height: 100%;
-      }
-
-      table, tr, th {
-        padding-right: 20px;
-      }
-
-      .card-columns {
-        @include media-breakpoint-only(lg) {
-          column-count: 4;
-        }
-        @include media-breakpoint-only(xl) {
-          column-count: 5;
-        }
-      }
-    </style>
     <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
+      <link href="carousel.css" rel="stylesheet">
   </head>
   <body>
     <header>
@@ -100,12 +44,6 @@
           <a class="nav-link" href="{% url 'about' %}">About</a>
         </li>
       </ul>
-      <!--
-      <form class="form-inline mt-2 mt-md-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-     -->
         {% if user.is_superuser %}
         <table>
           <tr>
