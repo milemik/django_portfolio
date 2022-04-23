@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 def home(request):
     jobs = Job.objects
     client_jobs = ClientJobs.objects.filter(all_see=True)
-    cover_image = Cover.objects.filter(use=True).first()
+    cover_image = Cover.objects.filter(use=True).first().cover_image
     return render(request, "jobs/home.html", {"jobs": jobs, "client_jobs": client_jobs, "cover": cover_image})
 
 
