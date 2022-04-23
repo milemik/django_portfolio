@@ -38,7 +38,7 @@ class AddJobView(SuperUserCheck, View):
             return render(request, "jobs/createjob.html", {"form": self.form()})
 
 
-class ClinetJobView(LoginRequiredMixin, View):
+class ClientJobView(LoginRequiredMixin, View):
 
     form = ClientJobsForm
     login_url = "login"
