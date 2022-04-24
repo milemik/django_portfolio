@@ -21,10 +21,9 @@ def singup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            message = f'USERNAME: {request.POST["username"]}\n' f'USER_MAIL: {request.POST["email"]}'
             send_mail(
                 f"WEBSITE: New registrated user!",
-                message,
+                "New user registration on your website",
                 settings.EMAIL_HOST_USER,
                 ["pythonscraper@outlook.com"],
             )

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.db.models import Q
 from .models import PricaModel
@@ -8,7 +9,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-class MyView(View):
+class MyView(LoginRequiredMixin, View):
     form = PricaForm
 
     def get(self, request):
@@ -36,7 +37,7 @@ class MyView(View):
         return render(request, "prica/home.html", {"form": self.form()})
 
 
-class SveView(View):
+class SveView(LoginRequiredMixin, View):
     def get(self, request):
         price = PricaModel.objects.filter(Q(sender=request.user) | Q(reciever=request.user))
         return render(request, "prica/sveprice.html", {"price": price})
