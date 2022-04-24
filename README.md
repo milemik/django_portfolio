@@ -1,4 +1,4 @@
-# My Portfolio web
+# My Portfolio website
 
 ## This is the code that I use for my portfolio website
 
