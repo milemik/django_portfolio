@@ -7,7 +7,11 @@
  <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
       <h1 class="display-4 font-italic"><img src="{{ info.avatar.url }}" height="70" />  HELLO {{user.username}}</h1>
-      <p class="lead mb-0">Your email: {{user.email}}</p>
+      <p class="lead mb-0" style="padding-bottom: 3%">Your email: {{user.email}}</p>
+        <form action="{% url 'delete-user' %}" method="post">
+            {% csrf_token %}
+            <button class="btn btn-secondary" type="submit">delete your account!</button>
+        </form>
     </div>
   </div>
   <nav class="navbar" style="background-color: #99ccff;">

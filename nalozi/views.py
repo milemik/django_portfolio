@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
@@ -7,11 +8,11 @@ from jobs.models import ClientJobs
 from django.core.mail import send_mail
 from django.conf import settings
 
-
 MAINTENANCE_HTML = "maintenance_profile.html"
 
 
 def maintenance(request):
+    """User only to put some page/view under maintenance!"""
     return render(request, MAINTENANCE_HTML)
 
 
@@ -54,21 +55,30 @@ def user_login(request):
         return render(request, "login.html", {"form": form})
 
 
+@login_required
 def user_logout(request):
     if request.method == "POST":
-        print("LOGGING OUT")
         logout(request)
         return redirect("login")
     else:
-        print("GET REQUEST!?")
         return render(request, "logout.html")
 
 
+@login_required
 def profile(request):
     try:
         info = Korisnik.objects.filter(user=request.user).first()
         jobs = ClientJobs.objects.filter(client=request.user)
-        print(jobs)
         return render(request, "profil.html", {"info": info, "jobs": jobs})
     except TypeError:
         return redirect("singup")
+
+
+@login_required
+def delete_user(request):
+    if request.method == "POST":
+        user = request.user
+        user.delete()
+        return redirect("home")
+    else:
+        raise ValueError("Request method not allowed!")
