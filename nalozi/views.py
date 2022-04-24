@@ -22,7 +22,7 @@ def singup(request):
         if form.is_valid():
             form.save()
             send_mail(
-                f"WEBSITE: New registrated user!",
+                f"WEBSITE: New registered user!",
                 "New user registration on your website",
                 settings.EMAIL_HOST_USER,
                 ["pythonscraper@outlook.com"],
