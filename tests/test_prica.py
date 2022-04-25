@@ -45,7 +45,7 @@ def test_send_message_get(auth_client):
     client, user = auth_client
     url = reverse("home-prica")
     response = client.get(url)
-    assert response.status_code == 200
+    assert response.status_code == 200, "Expect that status code is 200"
 
 
 @pytest.mark.django_db
@@ -54,7 +54,7 @@ def test_send_message_get_admin(admin_client):
     url = reverse("home-prica")
     response = client.get(url)
 
-    assert response.status_code == 200
+    assert response.status_code == 200, "Expect that status code is 200"
 
 
 @pytest.mark.django_db
@@ -67,8 +67,8 @@ def test_send_message_to_admin(auth_client):
 
     response = client.post(url, {"text": message})
 
-    assert response.status_code == 200
-    assert PricaModel.objects.filter(sender=user, text=message, reciever=admin_user).exists()
+    assert response.status_code == 200, "Expect status code is 200"
+    assert PricaModel.objects.filter(sender=user, text=message, reciever=admin_user).exists(), "Expect that message is created"
 
 
 @pytest.mark.django_db
@@ -81,5 +81,18 @@ def test_send_message_from_admin_to_user(admin_client):
 
     response = client.post(url, {"reciever": user.id, "text": message})
 
-    assert response.status_code == 200
-    assert PricaModel.objects.filter(sender=admin_user, text=message, reciever=user).exists()
+    assert response.status_code == 200, "Check if response is OK"
+    assert PricaModel.objects.filter(sender=admin_user, text=message, reciever=user).exists(), "Expect that message is created with correct sender and reciver"
+
+
+@pytest.mark.django_db
+def test_mark_read_message(auth_client):
+    client, auth = auth_client
+    url = reverse("mark-read-message")
+    message = PricaFactory()
+    response = client.post(url, {"message_id": message.id}, follow=True)
+
+    assert response.redirect_chain == [("/prica/price/", 302)], "Expect that we are redirected to all messages"
+    message.refresh_from_db()
+    assert message.is_read is True, "Expect that message is mark as read"
+

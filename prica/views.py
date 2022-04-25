@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.db.models import Q
 from .models import PricaModel
 from django.views import View
@@ -43,3 +43,11 @@ class SveView(LoginRequiredMixin, View):
     def get(self, request):
         price = PricaModel.objects.filter(Q(sender=request.user) | Q(reciever=request.user)).all()
         return render(request, "prica/sveprice.html", {"price": price})
+
+
+class MarkRead(LoginRequiredMixin, View):
+    def post(self, request):
+        message = PricaModel.objects.get(id=request.POST.get("message_id"))
+        message.is_read = True
+        message.save()
+        return redirect("price")

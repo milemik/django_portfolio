@@ -8,6 +8,7 @@ class PricaModel(models.Model):
     reciever = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="reciever")
     text = models.TextField(max_length=200)
     time = models.DateTimeField(auto_now_add=True)
+    is_read = models.BooleanField(default=False)
 
     class Meta:
         ordering = ["-time"]
