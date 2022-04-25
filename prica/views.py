@@ -36,7 +36,6 @@ class MyView(LoginRequiredMixin, View):
                 settings.EMAIL_HOST_USER,
                 ["pythonscraper@outlook.com"],
             )
-
         return render(request, "prica/home.html", {"form": self.form()})
 
 
