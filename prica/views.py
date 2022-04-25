@@ -23,8 +23,12 @@ class MyView(LoginRequiredMixin, View):
             self.form = AdminPricaForm
         form = self.form(request.POST)
         admin_user = User.objects.filter(is_superuser=True).first()
+        if request.user.is_superuser:
+            reciever = User.objects.get(id=int(request.POST["reciever"]))
+        else:
+            reciever = admin_user
         if form.is_valid():
-            PricaModel.objects.create(sender=request.user, reciever=admin_user, text=request.POST["text"])
+            PricaModel.objects.create(sender=request.user, reciever=reciever, text=request.POST["text"])
             message = f'USER: {request.user}\nMESSAGE: {request.POST["text"]}'
             send_mail(
                 f"New message from {request.user}",
@@ -38,5 +42,5 @@ class MyView(LoginRequiredMixin, View):
 
 class SveView(LoginRequiredMixin, View):
     def get(self, request):
-        price = PricaModel.objects.filter(Q(sender=request.user) | Q(reciever=request.user))
+        price = PricaModel.objects.filter(Q(sender=request.user) | Q(reciever=request.user)).all()
         return render(request, "prica/sveprice.html", {"price": price})
