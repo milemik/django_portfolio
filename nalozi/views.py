@@ -67,7 +67,10 @@ def user_logout(request):
 def profile(request):
     try:
         info = Korisnik.objects.filter(user=request.user).first()
-        jobs = ClientJobs.objects.filter(client=request.user)
+        if request.user.is_superuser:
+            jobs = ClientJobs.objects.all()
+        else:
+            jobs = ClientJobs.objects.filter(client=request.user)
         return render(request, "profil.html", {"info": info, "jobs": jobs})
     except TypeError:
         return redirect("singup")
