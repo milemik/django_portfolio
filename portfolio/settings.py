@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     "jobs.apps.JobsConfig",
     "nalozi.apps.NaloziConfig",
     "prica",
+    "api.apps.ApiConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

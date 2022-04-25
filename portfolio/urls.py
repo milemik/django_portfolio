@@ -31,4 +31,5 @@ urlpatterns = [
     path("freeproxies/", proxyapp.views.prox, name="freeproxies"),
     path("nalozi/", include("nalozi.urls")),
     path("prica/", include("prica.urls")),
+    path("api/", include("api.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

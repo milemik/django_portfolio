@@ -60,3 +60,9 @@ table, tr, th {
     font-family: sans-serif;
     font-weight: lighter;
 }
+
+#newMessages {
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+}
