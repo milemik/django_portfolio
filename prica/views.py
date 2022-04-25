@@ -24,7 +24,6 @@ class MyView(LoginRequiredMixin, View):
         form = self.form(request.POST)
         admin_user = User.objects.filter(is_superuser=True).first()
         if form.is_valid():
-            # user_reciever = User.objects.get(id=request.POST['reciever'])
             PricaModel.objects.create(sender=request.user, reciever=admin_user, text=request.POST["text"])
             message = f'USER: {request.user}\nMESSAGE: {request.POST["text"]}'
             send_mail(
