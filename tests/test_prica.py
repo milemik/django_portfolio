@@ -41,6 +41,23 @@ def test_sve_price_with_messages(auth_client):
 
 
 @pytest.mark.django_db
+def test_send_message_get(auth_client):
+    client, user = auth_client
+    url = reverse("home-prica")
+    response = client.get(url)
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_send_message_get_admin(admin_client):
+    client, user = admin_client
+    url = reverse("home-prica")
+    response = client.get(url)
+
+    assert response.status_code == 200
+
+
+@pytest.mark.django_db
 def test_send_message_to_admin(auth_client):
     client, user = auth_client
     admin_user = UserFactory(is_staff=True, is_superuser=True)
@@ -55,10 +72,8 @@ def test_send_message_to_admin(auth_client):
 
 
 @pytest.mark.django_db
-def test_send_message_from_admin_to_user():
-    admin_user = UserFactory(is_staff=True, is_superuser=True)
-    client = Client()
-    client.force_login(admin_user)
+def test_send_message_from_admin_to_user(admin_client):
+    client, admin_user = admin_client
     user = UserFactory()
     message = "testing text"
 
