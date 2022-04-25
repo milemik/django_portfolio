@@ -19,7 +19,7 @@ class KorisnikFactory(factory.django.DjangoModelFactory):
         model = Korisnik
 
 
-class PricaFactory(factory.django.DjangoModelFactory):
+class PricaModelFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = PricaModel
 
