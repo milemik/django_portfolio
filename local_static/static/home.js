@@ -1,5 +1,9 @@
 function checkNewMessages() {
-    const url = "https://" + imDomain + "/api/num-unread/" + userId + "/";
+    let http_req = "https://";
+    if (imDomain.includes("localhost")) {
+        http_req = "http://";
+    }
+    const url = http_req + imDomain + "/api/num-unread/" + userId + "/";
     const docTag = document.getElementById("newMessages")
 
     fetch(url, {
