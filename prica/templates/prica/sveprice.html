@@ -9,14 +9,18 @@
             <h5 class="mb-1">Message send to: {{prica.reciever}}</h5>
       	{% else %}
             <h5 class="mb-1">Message from: {{prica.sender}}</h5>
+            {% if not prica.is_read %}
+                <form action="{% url 'mark-read-message' %}" method="post">
+                    {% csrf_token %}
+                    <input name="message_id" type="hidden" value="{{ prica.id }}"/>
+                    <button class="btn btn-light" type="submit">Mark READ</button>
+                </form>
+                {% endif %}
       	{% endif %}
       <small>at {{prica.time}}</small>
     </div>
     <p class="mb-1">{{prica.text}}</p>
   </a>
-<!-- <div style="padding-top: 70px">
-	<p><b>{{prica.reciever}}</b> : <i>{{prica.text}}</i></p>
-	<small>at {{prica.time}}</small> -->
 
 {% endfor %}
 
