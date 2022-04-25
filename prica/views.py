@@ -9,7 +9,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
-class MyView(LoginRequiredMixin, View):
+class SendMessage(LoginRequiredMixin, View):
     form = PricaForm
 
     def get(self, request):
