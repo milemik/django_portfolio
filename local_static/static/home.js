@@ -1,5 +1,5 @@
 function checkNewMessages() {
-    const url = "http://" + imDomain + "/api/num-unread/" + userId + "/";
+    const url = "https://" + imDomain + "/api/num-unread/" + userId + "/";
     const docTag = document.getElementById("newMessages")
 
     fetch(url, {
