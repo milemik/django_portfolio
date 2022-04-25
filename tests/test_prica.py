@@ -1,7 +1,18 @@
 import pytest
 from django.urls import reverse
+from django.test import Client
 
 from tests.factories import PricaFactory, UserFactory
+
+
+@pytest.mark.django_db
+def test_sve_price_no_login_user():
+    client = Client()
+    url = reverse("price")
+
+    response = client.get(url, follow=True)
+
+    assert response.redirect_chain == [('/accounts/login/?next=/prica/price/', 302)]
 
 
 @pytest.mark.django_db
