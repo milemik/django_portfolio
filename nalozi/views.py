@@ -8,6 +8,8 @@ from jobs.models import ClientJobs
 from django.core.mail import send_mail
 from django.conf import settings
 
+from .utils import email_is_ok
+
 MAINTENANCE_HTML = "maintenance_profile.html"
 
 
@@ -18,6 +20,9 @@ def maintenance(request):
 
 def singup(request):
     if request.method == "POST":
+        if not email_is_ok(request.POST.get("email")):
+            form = SignupForm()
+            return render(request, "singup.html", {"form": form, "message": "Domain not valid"})
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
