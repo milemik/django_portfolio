@@ -97,3 +97,6 @@ def foo_view(request):
 def bar() -> bool:
     return True
 
+def bla() -> None:
+    pass
+
