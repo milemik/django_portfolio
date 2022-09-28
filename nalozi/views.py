@@ -91,5 +91,5 @@ def delete_user(request):
         raise ValueError("Request method not allowed!")
 
 
-def fooView(request):
+def foo_view(request):
     return redirect("home")
