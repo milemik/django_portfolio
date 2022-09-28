@@ -94,6 +94,6 @@ def delete_user(request):
 def foo_view(request):
     return redirect("home")
 
-def bar():
-    pass
+def bar() -> bool:
+    return True
 
