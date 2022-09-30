@@ -40,7 +40,7 @@ def test_profile_admin(admin_client):
 
 
 @pytest.mark.django_db
-def test_singup_wrong_email_domain():
+def test_sing_up_wrong_email_domain():
     data = {"username": "testuser", "email": "test@test.com", "password1": "somepass123", "password2": "somepass123"}
     client = Client()
     url = reverse("singup")
