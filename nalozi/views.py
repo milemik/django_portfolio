@@ -89,14 +89,3 @@ def delete_user(request):
         return redirect("home")
     else:
         raise ValueError("Request method not allowed!")
-
-
-def foo_view(request):
-    return redirect("home")
-
-def bar() -> bool:
-    return True
-
-def bla() -> None:
-    pass
-
