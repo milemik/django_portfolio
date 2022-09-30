@@ -27,3 +27,11 @@ def test_blog_detail_view_blog_exist(client):
     response = client.get(url)
 
     assert response.status_code == 200
+
+
+@pytest.mark.django_db
+def test_blog_create_view_not_superuser(client):
+    url = reverse("create-blog")
+    response = client.post(url, follow=True)
+
+    assert response.status_code == 404
