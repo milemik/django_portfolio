@@ -1,6 +1,7 @@
 import factory
 from django.contrib.auth import get_user_model
 
+from blog.models import Blog
 from jobs.models import ClientJobs
 from nalozi.models import Korisnik
 from prica.models import PricaModel
@@ -34,3 +35,9 @@ class ClientJobsFactory(factory.django.DjangoModelFactory):
     client = factory.SubFactory(UserFactory)
     all_see = False
     jobimage = factory.django.ImageField()
+
+
+class BlogFactory(factory.django.DjangoModelFactory):
+    blog_image = factory.django.ImageField()
+    class Meta:
+        model = Blog
