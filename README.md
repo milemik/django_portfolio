@@ -25,3 +25,10 @@ Decided to make if public git... well why not :)
     $ python manage.py runserver
     ```
 6. Enjoy :)
+
+
+## Run tests
+
+``` shell
+pytest
+```
