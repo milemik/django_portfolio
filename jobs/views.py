@@ -9,15 +9,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.views.generic import TemplateView
 
+from .selectors import jobs_get_jobs, jobs_public_client_jobs, job_get_cover
+
 
 class HomeView(TemplateView):
     template_name = "jobs/home.html"
 
     def get_context_data(self, **kwargs) -> Dict:
         context = super().get_context_data(**kwargs)
-        context["jobs"] = Job.objects.all()
-        context["client_jobs"] = ClientJobs.objects.filter(all_see=True)
-        context["cover"] = Cover.objects.filter(use=True).first().cover_image
+        context["jobs"] = jobs_get_jobs()
+        context["client_jobs"] = jobs_public_client_jobs()
+        context["cover"] = job_get_cover().cover_image
         return context
 
 
