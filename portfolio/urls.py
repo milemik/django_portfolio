@@ -23,10 +23,10 @@ import proxyapp.views
 
 urlpatterns = [
     path("adminivan/", admin.site.urls),
-    path("", jobs.views.home, name="home"),
+    path("", jobs.views.HomeView.as_view(), name="home"),
     path("createjob/", jobs.views.AddJobView.as_view(), name="create-job"),
     path("offerjob/", jobs.views.ClientJobView.as_view(), name="offer-job"),
-    path("about/", jobs.views.about, name="about"),
+    path("about/", jobs.views.AboutView.as_view(), name="about"),
     path("blog/", include("blog.urls")),
     path("freeproxies/", proxyapp.views.prox, name="freeproxies"),
     path("nalozi/", include("nalozi.urls")),

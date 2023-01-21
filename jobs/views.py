@@ -1,3 +1,5 @@
+from typing import Dict
+
 from django.shortcuts import render, redirect
 from .models import Job, ClientJobs, Cover
 from .forms import JobForm, ClientJobsForm
@@ -5,16 +7,22 @@ from django.views import View
 from utils.premissions import SuperUserCheck
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-def home(request):
-    jobs = Job.objects
-    client_jobs = ClientJobs.objects.filter(all_see=True)
-    cover_image = Cover.objects.filter(use=True).first().cover_image
-    return render(request, "jobs/home.html", {"jobs": jobs, "client_jobs": client_jobs, "cover": cover_image})
+from django.views.generic import TemplateView
 
 
-def about(request):
-    return render(request, "jobs/about.html")
+class HomeView(TemplateView):
+    template_name = "jobs/home.html"
+
+    def get_context_data(self, **kwargs) -> Dict:
+        context = super().get_context_data(**kwargs)
+        context["jobs"] = Job.objects.all()
+        context["client_jobs"] = ClientJobs.objects.filter(all_see=True)
+        context["cover"] = Cover.objects.filter(use=True).first().cover_image
+        return context
+
+
+class AboutView(TemplateView):
+    template_name = "jobs/about.html"
 
 
 class AddJobView(SuperUserCheck, View):
