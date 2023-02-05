@@ -9,7 +9,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
-    "proxyapp.apps.ProxyappConfig",
     "blog.apps.BlogConfig",
     "jobs.apps.JobsConfig",
     "nalozi.apps.NaloziConfig",

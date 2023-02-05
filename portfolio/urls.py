@@ -18,7 +18,6 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 import jobs.views
-import proxyapp.views
 
 
 urlpatterns = [
@@ -28,7 +27,6 @@ urlpatterns = [
     path("offerjob/", jobs.views.ClientJobView.as_view(), name="offer-job"),
     path("about/", jobs.views.AboutView.as_view(), name="about"),
     path("blog/", include("blog.urls")),
-    path("freeproxies/", proxyapp.views.prox, name="freeproxies"),
     path("nalozi/", include("nalozi.urls")),
     path("prica/", include("prica.urls")),
     path("api/", include("api.urls")),
