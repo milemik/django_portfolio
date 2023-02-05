@@ -16,8 +16,6 @@ function checkNewMessages() {
                 let result = response.json()
                 let status_code = response.status;
                 if (status_code !== 200) {
-                    // console.log("BAD RESPONSE")
-                    // console.log(result)
                 } else {
                     result.then(data => {
                         if ( data.unread > 0) {
