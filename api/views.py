@@ -1,4 +1,3 @@
-# from django.contrib.sites.models import Site
 from django.http import JsonResponse
 
 from prica.models import PricaModel
