@@ -1,19 +1,22 @@
 function checkNewMessages() {
-    let http_req = "https://";
-    if (imDomain.includes("localhost")) {
-        http_req = "http://";
+    function createBaseUrl() {
+        let urlObj = new URL(document.URL);
+        return `${urlObj.protocol}//${urlObj.host}`;
     }
-    const url = http_req + imDomain + "/api/num-unread/" + userId + "/";
+
+    let baseUrl = createBaseUrl();
+
+    const url =`${baseUrl}/api/num-unread/`;
     const docTag = document.getElementById("newMessages")
 
     fetch(url, {
         method: "GET",
-        headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-        mode: "cors"
+        headers: {'Content-Type': 'application/json'},
+        mode: "same-origin"
     })
         .then(
             response => {
-                let result = response.json()
+                let result = response.json();
                 let status_code = response.status;
                 if (status_code !== 200) {
                 } else {
@@ -23,10 +26,10 @@ function checkNewMessages() {
                         } else {
                             docTag.innerHTML = "inbox";
                         }
-                    })
+                    });
                 }
             }
-        )
+        );
 }
 
 checkNewMessages()
