@@ -1,3 +1,5 @@
+const docTag = document.getElementById("newMessages");
+
 function checkNewMessages() {
     function createBaseUrl() {
         let urlObj = new URL(document.URL);
@@ -7,7 +9,7 @@ function checkNewMessages() {
     let baseUrl = createBaseUrl();
 
     const url =`${baseUrl}/api/num-unread/`;
-    const docTag = document.getElementById("newMessages")
+
 
     fetch(url, {
         method: "GET",
@@ -19,8 +21,10 @@ function checkNewMessages() {
                 let result = response.json();
                 let status_code = response.status;
                 if (status_code !== 200) {
+                    // return
                 } else {
                     result.then(data => {
+                        console.log(data.unread)
                         if ( data.unread > 0) {
                             docTag.innerHTML = "inbox " + data.unread;
                         } else {
@@ -32,4 +36,7 @@ function checkNewMessages() {
         );
 }
 
-checkNewMessages()
+if (docTag !== null) {
+    checkNewMessages();
+}
+

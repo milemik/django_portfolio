@@ -112,7 +112,10 @@
         let imDomain = "{{ request.get_host }}";
     </script>
     <script>
-        let userId = {{ request.user.id }};
+        let userId = null;
+        if ("{{ request.user.id }}" !== "None") {
+            userId = {{ request.user.id }};
+        }
     </script>
     <script src="{% static 'static/home.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
