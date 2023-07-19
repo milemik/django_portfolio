@@ -12,6 +12,11 @@ Decided to make if public git... well why not :)
     $ bash run_dev.sh
     ```
     This will start docker postgres container for dev DB
+   
+   **NOTE:** on widnows use this command:
+   ```shell
+   $ bash run_dev_win.sh
+   ```
 3. Run migration if you run for first time:
     ```shell
     $ pyhton manage.py migrate

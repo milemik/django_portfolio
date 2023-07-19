@@ -9,7 +9,7 @@ from tests.factories import UserFactory, PricaModelFactory
 def test_get_num_of_unread_messages():
     user = UserFactory()
     client = Client()
-    url = reverse("unread-messages", kwargs={"user_id": user.id})
+    url = reverse("unread-messages")
     response = client.get(url)
     assert response.status_code == 200
     assert response.json().get("unread") == 0
@@ -22,7 +22,8 @@ def test_get_num_of_unread_messages_has_unread():
     PricaModelFactory.create_batch(unread_num, reciever=user)
     PricaModelFactory(sender=user)  # this one shouldn't be counted as unread, since user is sender
     client = Client()
-    url = reverse("unread-messages", kwargs={"user_id": user.id})
+    client.force_login(user=user)
+    url = reverse("unread-messages")
     response = client.get(url)
     assert response.status_code == 200
     assert response.json().get("unread") == unread_num

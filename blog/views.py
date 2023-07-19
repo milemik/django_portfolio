@@ -1,18 +1,29 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Blog
 from django.views import View
+from django.views.generic import TemplateView, DetailView
 from .forms import BlogForm
 from utils.premissions import SuperUserCheck
 
 
-def allblogs(request):
-    blogs = Blog.objects
-    return render(request, "blog/allblogs.html", {"blogs": blogs})
+class AllBlogsView(TemplateView):
+    template_name = "blog/allblogs.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["blogs"] = Blog.objects.all()
+        return context
 
 
-def blog(request, blog_id):
-    blog_detail = get_object_or_404(Blog, pk=blog_id)
-    return render(request, "blog/blog.html", {"blog": blog_detail})
+class BlogDetailView(DetailView):
+    template_name = "blog/blog.html"
+
+    queryset = Blog.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["blog"] = self.get_object()
+        return context
 
 
 class AddBlogVew(SuperUserCheck, View):
