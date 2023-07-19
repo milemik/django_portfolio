@@ -1,4 +1,12 @@
-Django==3.2.18
+asgiref==3.5.0
+asttokens==2.0.5
+attrs==21.4.0
+backcall==0.2.0
+certifi==2021.10.8
+charset-normalizer==2.0.12
+decorator==5.1.1
+Django==3.2.20
+executing==0.8.3
 factory-boy==3.2.1
 Faker==17.0.0
 gunicorn==20.1.0
