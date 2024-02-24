@@ -7,15 +7,9 @@ Decided to make if public git... well why not :)
 ## Develop
 
 1. Clone the repo
-2. Run postgresdb for dev/test using run_dev.sh
-    ```shell
-    $ bash run_dev.sh
-    ```
-    This will start docker postgres container for dev DB
-   
-   **NOTE:** on widnows use this command:
+2. Run postgresdb for dev/test using docker compose
    ```shell
-   $ bash run_dev_win.sh
+   $ docker compose up
    ```
 3. Run migration if you run for first time:
     ```shell
