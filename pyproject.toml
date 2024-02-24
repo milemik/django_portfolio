@@ -20,6 +20,7 @@ faker = "17.0.0"
 ipdb = "0.13.11"
 pytest = "7.2.1"
 pytest-django = "4.5.2"
+black = "^24.2.0"
 
 [build-system]
 requires = ["poetry-core"]
