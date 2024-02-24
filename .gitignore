@@ -128,3 +128,4 @@ dmypy.json
 
 #Git
 .gitconfig
+/postgres_volume/
