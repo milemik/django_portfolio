@@ -1,7 +1,7 @@
-from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
 from prica.models import PricaModel
+
 
 def get_num_of_unread_messages(request):
     if request.user.is_anonymous:
